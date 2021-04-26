@@ -1,0 +1,134 @@
+---
+title: "Week 8 Forced Alignment"
+author: "Hywel Stoakes | Experimental Phonetics"
+institute: "The University of Melbourne"
+date: "2021-04-26"
+output: # Specifying multiple outputs appears to favour the first
+  html_document:
+    fig_caption: yes
+    number_sections: yes
+    toc: yes
+    toc_float: yes
+    df_print: paged
+  pdf_document:
+    latex_engine: xelatex
+    toc: yes
+    fig_caption: yes
+    df_print: kable
+    keep_tex: true
+  html_notebook: # This determines the RStuido preview format
+    fig_caption: yes
+    number_sections: yes
+    toc: yes
+    toc_float: yes
+fontsize: 11pt  
+mainfont: CharisSIL    
+bibliography: "/Users/hywel/Dropbox (Personal)/Bibliography/Main-Bibliography_2021.bib"
+csl: "/Users/hywel/Dropbox (Personal)/Bibliography/styles-master/apa.csl"
+link-citations: yes # make citations hyperlinks
+linkcolor: blue
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Project Setup
+
+1.  Once you have download and upzip this project:
+
+-   (<https://github.com/Hywel-Stoakes/Forced_Alignment_Workshop>)
+
+2.  navigate to Canvas (LMS) and download the zip file called `W8_data.zip` Copy the unzipped files to the `data` directory within the project folder.
+
+3.  Be sure to be running a Chrome Browser (available here: <https://www.google.com/chrome/>)
+
+## Open Rstudio
+
+4.  Now open Rstudio (or double click the .Rproj in the root of the folder).
+
+# Forced Alignment of Australian English
+
+In this section of the workshop we are going to automatically segment some read speech from the ANDOSL corpus of Australian English. You are probably all very familiar with these examples by now. We will be using an Audio file (wav) and an associated text file with a transcript of the speech in English orthography.
+
+The Output will be a textgrid with the words segmented and also the phones force aligned based on the orthographic input.
+
+There a number of flavours of WebMAUS and the BAS tools generally and we will look at some of the others in some detail and give you an idea of the sort of files you may need before you start.
+
+## Navigate to WebMAUS Basic
+
+First we will look at the WebMAUS Basic tool using a web browser and then we will continue to look at alternative ways to access the MAUS system.
+
+1.  Open the Chrome Browser
+2.  You can navigate to **WebMAUS Basic** Here :
+
+-   <https://clarin.phonetik.uni-muenchen.de/BASWebServices/interface/WebMAUSBasic>
+
+## Input for WebMAUS Basic
+
+To use WebMAUS you will need:
+
+-   An **Audio** (`wav`) file (note that you can use a variety of file types as input including compressed formats such as `mp3`/`mp4` and other formats such as `aiff`).
+-   An **Annotation** file as a text tile (`txt`) (note: WebMAUS also accepts `docx`/`pdf` and other formats. Note that this method doesn't allow `TextGrids` as input).
+
+<!-- ![webmaus_basic](/Users/hywel/Dropbox%20(Personal)/Teaching/2021_ExpPhon/Week_8/Forced_Alignment_Workshop/figures/WebMAUSBasic.png) -->
+
+## How to get some output for WebMAUS Basic
+
+1.  Drag and drop pairs of files to the dotted rectangle. (see figure 1.)
+
+    -   we will input the files from `"data/andosl_text"` (drag and drop them all)
+
+2.  Then click the `Upload` Button
+
+3.  In **Service Options** Change **Language** to `English (AU)` and **Output format** to `Praat (TextGrid)`
+
+![webmaus_basic options](/Users/hywel/Dropbox%20(Personal)/Teaching/2021_ExpPhon/Week_8/Forced_Alignment_Workshop/figures/WebMAUSBasicII.png)
+
+4.  Then under the **Run** heading, click the box that indicates that you agree to the *Terms of Usage* and click the `Run Web Service` button (see figure 2.)
+
+![run webmaus](/Users/hywel/Dropbox%20(Personal)/Teaching/2021_ExpPhon/Week_8/Forced_Alignment_Workshop/figures/WebMAUSBasicIII.png)
+
+## Output from WebMAUS Basic
+
+Once you click the run button there will be a dialogue box with some tips and tricks for the WebMAUS service that appear and a progress bar along the top of the browser window.
+
+![webmaus output](/Users/hywel/Dropbox%20(Personal)/Teaching/2021_ExpPhon/Week_8/Forced_Alignment_Workshop/figures/WebMAUSoutput.png)
+
+If the service has been successful the message box at the bottom of the window will go green and you will get an option to `Download as a ZIP-file`. If you get a yellow warning message you still may be able to retrieve results. If the warning shows a red box however there may be an error that has prevented any out put. It is for this reason that it is best to split up large numbers of files into smaller groups.
+
+![webmaus messages](/Users/hywel/Dropbox%20(Personal)/Teaching/2021_ExpPhon/Week_8/Forced_Alignment_Workshop/figures/WebMAUSbox.png)
+
+The resulting zip file will have a file name that is in the form: `results-2021-04-26_06-11-09.zip`. This will contain the TextGrid files, unzip this folder and open the files in `Praat`. You will need to find the original wav files (in `data/andosl_text`) and copy them to the results folder. You should now see that there are 3 tiers in the textgrid: One called `ORT-MAU`, the next called `KAN-MAU` and the bottom tier called `MAU`. The `MAU` extension on the tier name shows that they have been force aligned rather than hand-labelled.
+
+# Using MAUS for an Australian Language Example
+
+The setup for this example is the same as the previous example with a few small differences.
+
+In this example we are using a small excerpt of the South Wind and the Sun spoken by a speaker of Mawng and recorded here at The University of Melbourne.
+
+1.  Drag and drop pairs of files to the dotted rectangle. (as in figure 1. above)
+
+    -   input the files from `"data/mawng_text"` (drag and drop them all)
+
+![run webmaus](/Users/hywel/Dropbox%20(Personal)/Teaching/2021_ExpPhon/Week_8/Forced_Alignment_Workshop/figures/WebMAUSmawnginput.png)
+
+2.  In **Service Options** Change **Language** to `Aboriginal Languages (AU)` and leave **Output format** as `Praat (TextGrid)`.
+
+3.  Click on the `show inventory` button to see which sounds are modelled in this parameter file. As you can see there are examples from a few Australian languages.
+
+4.  Follow the steps listed above for Australian English and download and unzip the resulting zip file.
+
+5.  Load the files into Praat (you will need to copy the `wav` files from `"data/mawng_text"` in to the results directory).
+
+## Evaluating the results.
+
+If you take a look at the resulting files you may notice that there are some issues with the transcriptions alignments?
+
+1.  What are the main issues you can see?
+
+2.  Are all of the alignments accurate and if not where do they predominantly fail.
+
+3.  Are there labelling issues.
+
+4.  Are these problems easily addressed or remedied?
