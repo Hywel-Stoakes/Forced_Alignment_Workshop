@@ -4,8 +4,7 @@
 ## Hywel Stoakes
 ##---------------------------------##
 #### Setup ####
-packages = c("tidyverse", "emuR",
-             "phonTools")
+packages = c("tidyverse", "emuR", "phonTools")
 
 ## Now load or install&load all
 package.check <- lapply(
@@ -17,6 +16,6 @@ package.check <- lapply(
     }
   }
 )
-#################################
+##---------------------------------##
 #### data ####
 
