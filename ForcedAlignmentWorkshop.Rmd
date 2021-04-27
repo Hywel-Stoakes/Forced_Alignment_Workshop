@@ -39,7 +39,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 -   (<https://github.com/Hywel-Stoakes/Forced_Alignment_Workshop>)
 
-2.  navigate to Canvas (LMS) and download the zip file called `W8_data.zip` Copy the unzipped files to the `data` directory within the project folder.
+2.  navigate to Canvas (LMS) and download the zip file called `Week8_data.zip` Copy the unzipped files to the `data` directory within the project folder.
 
 3.  Be sure to be running a Chrome Browser (available here: <https://www.google.com/chrome/>)
 
